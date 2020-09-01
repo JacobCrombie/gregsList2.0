@@ -7,9 +7,14 @@ class JobsService {
   constructor() {
 
   }
+  async createJob(rawJob) {
+    let res = await api.post('jobs', rawJob)
+    let job = new Job(res.data.data)
+    ProxyState.jobs = [...ProxyState.jobs, job]
+  }
   async getJobs() {
     let res = await api.get('jobs')
-    ProxyState.jobs = res.data.data.map(j=> new Job(j))
+    ProxyState.jobs = res.data.data.map(j => new Job(j))
   }
 }
 

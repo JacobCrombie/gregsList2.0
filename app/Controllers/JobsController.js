@@ -22,4 +22,25 @@ try {
   console.error(error)
 }
   }
+  createJob() {
+    event.preventDefault();
+    let form = event.target
+    let rawJob = {
+      // @ts-ignore
+      company: form.company.value,
+      // @ts-ignore
+      jobTitle: form.jobTitle.value,
+      // @ts-ignore
+      rate: form.rate.value,
+      // @ts-ignore
+      hours: form.hours.value,
+      // @ts-ignore
+      description: form.description.value
+    }
+    try {
+      jobsService.createJob(rawJob)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
