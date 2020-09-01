@@ -62,16 +62,20 @@
             <div class="col" id="houseform">
                 <form onsubmit="app.housesController.createHouse()" class="form-inline">
                     <div class="form-group p-1">
-                        <label class="mr-1" for="make">Make</label>
-                        <input type="text" name="make" id="make" class="form-control" placeholder="Make...">
+                        <label class="mr-1" for="levels">Levels</label>
+                        <input type="number" name="levels" id="levels" class="form-control" placeholder="How many levels..." min="1" max ="10">
                     </div>
                     <div class="form-group p-1">
-                        <label class="mr-1" for="model">Model</label>
-                        <input type="text" name="model" id="model" class="form-control" placeholder="Model...">
+                        <label class="mr-1" for="bedrooms">Bedrooms</label>
+                        <input type="number" name="bedrooms" id="bedrooms" class="form-control" placeholder="Bedrooms..." min="1" max="50">
+                    </div>
+                    <div class="form-group p-1">
+                        <label class="mr-1" for="bathrooms">Bathrooms</label>
+                        <input type="number" name="bathrooms" id="bathrooms" class="form-control" placeholder="Bathrooms..." min="1" max="50">
                     </div>
                     <div class="form-group p-1">
                         <label class="mr-1" for="year">Year</label>
-                        <input type="number" name="year" id="year" class="form-control" placeholder="Year..." min="1900"
+                        <input type="number" name="year" id="year" class="form-control" placeholder="Year built..." min="500"
                             max="2021">
                     </div>
                     <div class="form-group p-1">
@@ -87,7 +91,7 @@
                         <label class="mr-1" for="img">Image Url</label>
                         <input type="url" name="img" id="img" class="form-control" placeholder="Image Url...">
                     </div>
-                    <button type="submit" class="btn btn-outline-success">Add Car</button>
+                    <button type="submit" class="btn btn-outline-success">Add Home</button>
                 </form>
             </div>
         </div>
