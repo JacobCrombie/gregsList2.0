@@ -20,4 +20,24 @@ export default class HousesController {
       console.error(error)
     }
   }
+  createHouse(){
+    event.preventDefault()
+    let form = event.target
+    // @ts-ignore
+    let rawHouse ={
+      // @ts-ignore
+      levels: form.levels.value,
+      // @ts-ignore
+      bedrooms: form.bedrooms.value,
+      // @ts-ignore
+      bathrooms: form.bathrooms.value,
+      // @ts-ignore
+      year: form.year.value,
+      // @ts-ignore
+      price: form.price.value,
+      // @ts-ignore
+      description: form.description.value
+    }
+    housesService.createHouse(rawHouse)
+  }
 }
