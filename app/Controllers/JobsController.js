@@ -7,6 +7,38 @@ function _drawJobs() {
   jobs.forEach(j => templates += j.jobTemplate)
   document.getElementById('jobdata').innerHTML = templates
 }
+function _drawForm() {
+  document.getElementById('form').innerHTML = `
+                  <form onsubmit="app.jobsController.createJob()" class="form-inline">
+                    <div class="form-group p-1">
+                        <label class="mr-1" for="company">Company</label>
+                        <input type="text" name="company" id="company" class="form-control" placeholder="Company..."
+                            required>
+                    </div>
+                    <div class="form-group p-1">
+                        <label class="mr-1" for="jobTitle">Job Title</label>
+                        <input type="text" name="jobTitle" id="jobTitle" class="form-control" placeholder="Job Title..."
+                            required>
+                    </div>
+                    <div class="form-group p-1">
+                        <label class="mr-1" for="rate">Payrate</label>
+                        <input type="number" name="rate" id="rate" class="form-control" placeholder="Payrate..."
+                            required min="1" max="100">
+                    </div>
+                    <div class="form-group p-1">
+                        <label class="mr-1" for="hours">Hours</label>
+                        <input type="number" name="hours" id="hours" class="form-control" placeholder="Hours..."
+                            required min="1" max="80">
+                    </div>
+                    <div class="form-group p-1">
+                        <label class="mr-1" for="description">Description</label>
+                        <input type="text" name="description" id="description" class="form-control"
+                            placeholder="Description...">
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">Add Job</button>
+                </form>
+  `
+}
 
 export default class JobsController {
   constructor() {
@@ -14,6 +46,10 @@ export default class JobsController {
     this.getJobs()
   }
 
+  drawJobsPage() {
+    _drawForm()
+    _drawJobs()
+  }
   getJobs() {
     try {
       jobsService.getJobs()
