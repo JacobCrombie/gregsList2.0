@@ -47,4 +47,11 @@ export default class HousesController {
       console.error(error);
     }
   }
+  bid(id) {
+    try {
+      housesService.bid(id)
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }

@@ -18,6 +18,15 @@ class HousesService {
     await api.delete(`houses/${id}`)
     ProxyState.houses = ProxyState.houses.filter(h => h.id !== id)
   }
+  async bid(id) {
+    let house = ProxyState.houses.find(f => f.id === id)
+    if (!house) {
+      throw new Error('House not found')
+    }
+    house.price += 10000
+    let res = await api.put(`houses/${id}`, { price: house.price })
+    ProxyState.houses = ProxyState.houses
+  }
 }
 
 const HOUSESSERVICE = new HousesService()
