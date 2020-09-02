@@ -20,11 +20,11 @@ export default class HousesController {
       console.error(error)
     }
   }
-  createHouse(){
+  createHouse() {
     event.preventDefault()
     let form = event.target
     // @ts-ignore
-    let rawHouse ={
+    let rawHouse = {
       // @ts-ignore
       levels: form.levels.value,
       // @ts-ignore
@@ -39,5 +39,12 @@ export default class HousesController {
       description: form.description.value
     }
     housesService.createHouse(rawHouse)
+  }
+  removeHouse(id) {
+    try {
+      housesService.removeHouse(id)
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
