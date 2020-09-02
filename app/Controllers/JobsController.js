@@ -5,7 +5,7 @@ function _drawJobs() {
   let jobs = ProxyState.jobs
   let templates = ''
   jobs.forEach(j => templates += j.jobTemplate)
-  document.getElementById('jobdata').innerHTML = templates
+  document.getElementById('data').innerHTML = templates
 }
 function _drawForm() {
   document.getElementById('form').innerHTML = `
@@ -42,11 +42,12 @@ function _drawForm() {
 
 export default class JobsController {
   constructor() {
-    ProxyState.on('jobs', _drawJobs)
+    ProxyState.off('jobs', _drawJobs)
     this.getJobs()
   }
 
   drawJobsPage() {
+    ProxyState.on('jobs', _drawJobs)
     _drawForm()
     _drawJobs()
   }

@@ -5,7 +5,7 @@ function _drawHouses() {
   let houses = ProxyState.houses
   let templates = ''
   houses.forEach(h => templates += h.houseTemplate)
-  document.getElementById('housedata').innerHTML = templates
+  document.getElementById('data').innerHTML = templates
 }
 function _drawForm() {
   document.getElementById('form').innerHTML = `
@@ -41,8 +41,8 @@ function _drawForm() {
                             placeholder="Description...">
                     </div>
                     <div class="form-group p-1">
-                        <label class="mr-1" for="img">Image Url</label>
-                        <input type="url" name="img" id="img" class="form-control" placeholder="Image Url...">
+                        <label class="mr-1" for="imgUrl">Image Url</label>
+                        <input type="url" name="imgUrl" id="imgUrl" class="form-control" placeholder="Image Url...">
                     </div>
                     <button type="submit" class="btn btn-outline-success">Add Home</button>
                 </form>
@@ -51,10 +51,11 @@ function _drawForm() {
 export default class HousesController {
 
   constructor() {
-    ProxyState.on('houses', _drawHouses)
+    ProxyState.off('houses', _drawHouses)
     this.getHouses()
   }
   drawHousesPage() {
+    ProxyState.on('houses', _drawHouses)
     _drawForm()
     _drawHouses()
   }
@@ -80,6 +81,8 @@ export default class HousesController {
       year: form.year.value,
       // @ts-ignore
       price: form.price.value,
+      // @ts-ignore
+      imgUrl: form.imgUrl.value,
       // @ts-ignore
       description: form.description.value
     }
