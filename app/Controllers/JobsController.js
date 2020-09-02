@@ -1,26 +1,25 @@
 import { ProxyState } from "../AppState.js";
 import jobsService from "../Services/JobsService.js";
 
-function _drawJobs(){
-let jobs = ProxyState.jobs
-let templates =''
-jobs.forEach(j=> templates += j.jobTemplate)
-document.getElementById('jobdata').innerHTML = templates
+function _drawJobs() {
+  let jobs = ProxyState.jobs
+  let templates = ''
+  jobs.forEach(j => templates += j.jobTemplate)
+  document.getElementById('jobdata').innerHTML = templates
 }
 
-export default class JobsController{
-
-
-  constructor(){
+export default class JobsController {
+  constructor() {
     ProxyState.on('jobs', _drawJobs)
     this.getJobs()
   }
-  getJobs(){
-try {
-  jobsService.getJobs()
-} catch (error) {
-  console.error(error)
-}
+
+  getJobs() {
+    try {
+      jobsService.getJobs()
+    } catch (error) {
+      console.error(error)
+    }
   }
   createJob() {
     event.preventDefault();
@@ -41,6 +40,13 @@ try {
       jobsService.createJob(rawJob)
     } catch (error) {
       console.error(error)
+    }
+  }
+  removeJob(id) {
+    try {
+      jobsService.removeJob(id)
+    } catch (error) {
+      console.error(error);
     }
   }
 }

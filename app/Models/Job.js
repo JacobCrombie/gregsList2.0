@@ -1,6 +1,6 @@
-export default class Job{
+export default class Job {
 
-  constructor({ _id, company, jobTitle, rate, hours, description}){
+  constructor({ _id, company, jobTitle, rate, hours, description }) {
     this.id = _id
     this.company = company
     this.jobTitle = jobTitle
@@ -9,7 +9,7 @@ export default class Job{
     this.description = description || "no description"
   }
 
-  get jobTemplate(){
+  get jobTemplate() {
     return `            
     <div class="col-4 my-2">
       <div class="card">
@@ -18,7 +18,7 @@ export default class Job{
               <h4 class="card-title">$${this.rate}/hr - ${this.hours} hrs/week</h4>
               <p class="card-text">${this.description}</p>
               <div class="d-flex justify-content-between">
-                  <button class="btn btn-outline-danger" onclick="app.jobsController.removeHouse('${this.id}')">Delete</button>
+                  <button class="btn btn-outline-danger" onclick="app.jobsController.removeJob('${this.id}')">Delete</button>
                   <button class="btn btn-outline-info" onclick="app.jobsController.apply('${this.id}')">Apply</button>
               </div>
           </div>
